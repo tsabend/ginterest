@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
 
   def get_all_pushes
     all_pushes = []
-    events = JSON.parse(open("https://api.github.com/users/#{username}/events?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}").read)
+    uri = URI.parse("https://api.github.com/users/#{username}/events?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}")
+    response = Net::HTTP.get_response(uri)
+    events = JSON.parse(response.body)
     events.each do |event|
       if event['type'] = 'PushEvent'
         all_pushes << event
@@ -14,15 +16,15 @@ class User < ActiveRecord::Base
   end
 
   def get_all_commits
-    commits = []
-    get_all_pushes.each do |push|
-      if push['payload']['commits'] != nil
+    get_all_pushes.map do |push|
+      if push && push['payload'] && push['payload']['commits']
         push['payload']['commits'].each do |commit|
-          commits << JSON.parse(open(commit['url']+"?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}").read)
+          uri = URI.parse(commit['url']+"?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}")
+          response = Net::HTTP.get_response(uri)
+          JSON.parse(response.body)
         end
       end
     end
-    commits
   end
 
 

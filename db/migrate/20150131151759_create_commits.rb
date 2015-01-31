@@ -6,7 +6,7 @@ class CreateCommits < ActiveRecord::Migration
       t.integer :length
       t.integer :files
       t.integer :cursing
-      t.integer :changes
+
       t.integer :punctuation
       t.integer :tense
       t.references :user, index: true

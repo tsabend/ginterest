@@ -1,0 +1,5 @@
+
+mkdir -p ~/.git-templates/hooks
+
+touch post-commit hook file
+

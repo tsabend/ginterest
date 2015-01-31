@@ -24,8 +24,13 @@ ActiveRecord::Schema.define(version: 20150131152009) do
   end
 
   create_table "commits", force: :cascade do |t|
-    t.integer  "score"
-    t.string   "feedback"
+    t.string   "sha"
+    t.date     "date"
+    t.integer  "length"
+    t.integer  "files"
+    t.integer  "cursing"
+    t.integer  "punctuation"
+    t.integer  "tense"
     t.integer  "user_id"
     t.string   "commit_sha"
     t.datetime "created_at"
@@ -40,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150131152009) do
     t.string   "github_username"
     t.string   "github_uid"
     t.string   "avatar_url"
+    t.string   "username"
     t.integer  "cohort_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
