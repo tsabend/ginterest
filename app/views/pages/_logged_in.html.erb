@@ -20,7 +20,8 @@
 
   <div class="clearfix outline-blue">
     <% @user.commits.each do |commit| %>
-    <%= commit.score %>
+    <li><%= commit.sha[0..10] %> <%= commit.score %></li>
+
     <% end %>
   </div>
 

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       user.get_all_commits.each do |commit_array|
         if commit_array
           commit_array.each do |commit|
-            Commit.from_algorithm(commit)
+            current_user.commits << Commit.from_algorithm(commit)
          end
        end
       end
@@ -16,9 +16,11 @@ class SessionsController < ApplicationController
       user = User.create_with_omniauth(auth)
       session[:user_id] = user.id
       user.get_all_commits.each do |commit_array|
-        commit_array.each do |commit|
-          Commit.from_algorithm(commit)
-        end
+        if commit_array
+          commit_array.each do |commit|
+            current_user.commits << Commit.from_algorithm(commit)
+         end
+       end
       end
       redirect_to root_url, :notice => "Welcome #{user.username}"
     end
