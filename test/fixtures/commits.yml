@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1
+  feedback: MyString
+  user_id: 
+  commit_sha: MyString
+
+two:
+  score: 1
+  feedback: MyString
+  user_id: 
+  commit_sha: MyString
