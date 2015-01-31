@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :github_username
       t.string :github_uid
       t.string :avatar_url
+      t.string :username
       t.references :cohort
 
       t.timestamps null: false
