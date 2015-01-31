@@ -1,4 +1,13 @@
-<a id="github_login" class="login_logout btn btn-default" href="/auth/github/">
-  <i class="fa fa-github"></i>
-  <span class="login_button">Github Login</span>
-</a>
+<div class="container">
+  <div class="navbar navbar-default">
+    <% if current_user %>
+      <%= link_to "Log Out", logout_path %>
+      <% else %>
+    <a id="github_login" class="login_logout btn btn-default" href="/auth/github/">
+      <i class="fa fa-github"></i>
+      <span class="login_button">Github Login</span>
+
+      <% end %>
+    </a>
+  </div>
+</div>

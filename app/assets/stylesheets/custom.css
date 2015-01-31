@@ -1,0 +1,15 @@
+.avatar {
+  width:200px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.user_info {
+  margin-top: 30px;
+}
