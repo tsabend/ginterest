@@ -4,6 +4,7 @@
 
 ul {
   list-style-type: none;
+  text-align: left;
 }
 
 .title {
@@ -12,4 +13,53 @@ ul {
 
 .user_info {
   margin-top: 30px;
+}
+
+.container {
+  text-align: center;
+}
+
+.subtext {
+  min-height:250px;
+}
+
+body {
+  font-family: Verdana;
+  background-color: #f0f8ff;
+}
+
+/*header {
+  text-align: center;
+  font-family: bello-pro;
+  font-weight: 400;
+  background-color: : #3a50d9;
+  color: #e0eff2;
+}*/
+
+.logged_in {
+  text-align: center;
+}
+
+.splash-img {
+  width: 365px;
+  height: 250px;
+}
+
+.frontpage{
+  font-size: 400px;
+}
+
+.frontpage2{
+  font-size: 300px;
+}
+
+.dbc {
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.dbcommit {
+  font-size: 200px;
+  color:black;
 }
