@@ -6,6 +6,9 @@ gem 'github_api'
 
 # Keep api keys secure
 gem 'dotenv-rails'
+# Front end dependencies
+gem 'basscss-rails'
+gem "font-awesome-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
