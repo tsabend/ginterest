@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Github api
+gem 'omniauth-github'
+gem 'github_api'
+
+# Keep api keys secure
+gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
