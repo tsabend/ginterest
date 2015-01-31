@@ -2,6 +2,31 @@ class User < ActiveRecord::Base
   has_many :commits
   belongs_to :cohort
 
+  def get_all_pushes
+    all_pushes = []
+    events = JSON.parse(open("https://api.github.com/users/#{username}/events?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}").read)
+    events.each do |event|
+      if event['type'] = 'PushEvent'
+        all_pushes << event
+      end
+    end
+    all_pushes
+  end
+
+  def get_all_commits
+    commits = []
+    get_all_pushes.each do |push|
+      if push['payload']['commits'] != nil
+        push['payload']['commits'].each do |commit|
+          commits << JSON.parse(open(commit['url']+"?client_id=#{ENV['GITHUB_KEY']}&client_secret=#{ENV['GITHUB_SECRET']}").read)
+        end
+      end
+    end
+    commits
+  end
+
+
+
   def self.create_with_omniauth(auth)
     create do |user|
       user.github_uid = auth["uid"]
