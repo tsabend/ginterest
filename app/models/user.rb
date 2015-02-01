@@ -26,16 +26,19 @@ class User < ActiveRecord::Base
   end
 
   def score
+    (avg_score * freq_modifier).round(2)
+  end
+
+  def avg_score
     return 0 if todays_commits.length == 0
     todays_scores = todays_commits.map {|commit| commit.score }
-    avg_score = todays_scores.reduce(:+) / todays_scores.length
-    # avg_score * freq_modifier
+    todays_scores.reduce(:+) / todays_scores.length
   end
 
   def freq_modifier
     return 0 if todays_commits.length == 0
-    time_elapsed = (todays_commits.last.date - todays_commits.first.date)
-    (todays_commits.length * 1.0) / time_elapsed
+    time_elapsed = (todays_commits.first.date - todays_commits.last.date) / 3600
+    (todays_commits.length / time_elapsed).round(2)
   end
 
   private
