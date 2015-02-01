@@ -11,6 +11,8 @@
         <li><%= @user.name %></li>
         <li><%= @user.username %></li>
         <li><%= @user.email %></li>
+        <li>Average Commit score: <%= @user.avg_score %></li>
+        <li>Frequency Modifier: <%= @user.freq_modifier %></li>
         <li>Today's score: <%= @user.score %></li>
       </ul>
 
@@ -18,11 +20,12 @@
   </div>
 
 
-  <div class="clearfix outline-blue">
+  <div class="clearfix container">
+    <ul>
     <% @user.commits.each do |commit| %>
-    <li><%= commit.title %> <%= commit.score %></li>
-
+      <li><%= commit.title %> <%= commit.score %></li>
     <% end %>
+    </ul>
   </div>
 
 
