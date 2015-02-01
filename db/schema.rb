@@ -25,16 +25,13 @@ ActiveRecord::Schema.define(version: 20150131152009) do
 
   create_table "commits", force: :cascade do |t|
     t.string   "sha"
-    t.date     "date"
-    t.integer  "length"
-    t.integer  "files"
-    t.integer  "cursing"
-    t.integer  "punctuation"
-    t.integer  "tense"
+    t.string   "message"
+    t.integer  "additions"
+    t.integer  "deletions"
+    t.integer  "diff"
+    t.integer  "number_of_files_changed"
+    t.datetime "date"
     t.integer  "user_id"
-    t.string   "commit_sha"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "commits", ["user_id"], name: "index_commits_on_user_id", using: :btree
@@ -42,13 +39,12 @@ ActiveRecord::Schema.define(version: 20150131152009) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "github_username"
     t.string   "github_uid"
     t.string   "avatar_url"
     t.string   "username"
     t.integer  "cohort_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
